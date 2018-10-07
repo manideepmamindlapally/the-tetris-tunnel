@@ -1,7 +1,6 @@
 #ifndef _GAME_
 #define _GAME_
 
-#include "Pieces.h"
 #include "Board.h"
 #include "IO.h"
 #include <time.h>
@@ -17,7 +16,7 @@ private:
 	int mScreenHeight;
 	int mNextPosX, mNextPosY, mNextPiece, mNextRotation;
 
-	Board *mBoard
+	Board *mBoard;
 
 	Pieces *mPieces;
 	IO *mIO;
@@ -42,7 +41,7 @@ public:
 /*---------------------------------------------------------
                     Get Rand Function
 -----------------------------------------------------------*/
-int GetRand(int numA, int numB)
+int Game::GetRand(int numA, int numB)
 {
 	return rand()*(numB - numA + 1) + numA;
 }
@@ -50,7 +49,7 @@ int GetRand(int numA, int numB)
 /*---------------------------------------------------------
                     InitGame
 -----------------------------------------------------------*/
-void InitGame()
+void Game::InitGame()
 {
 	// Init random numbers
 	srand((unsigned int) time(NULL));
@@ -71,7 +70,7 @@ void InitGame()
 /*-----------------------------------------------------------
                     Draw Game
 ------------------------------------------------------------*/
-void DrawBoard()
+void Game::DrawBoard()
 {
 	// draw the limits or boundaries
 	int mX1 = BOARD_POSITION - (BOARD_WIDTH * BLOCK_SIZE)/2 - 1;
@@ -91,7 +90,7 @@ void DrawBoard()
 /*------------------------------------------------------------
                    Draw Piece
 -------------------------------------------------------------*/
-void DrawPiece(int pX, int pY, int pPiece, int pRotation)
+void Game::DrawPiece(int pX, int pY, int pPiece, int pRotation)
 {
 	int mPixelsX = mBoard->GetXPosInPixels (pX);
 	int mPixelsY = mBoard->GetYPosInPixels (pY);
@@ -115,7 +114,7 @@ void DrawPiece(int pX, int pY, int pPiece, int pRotation)
 /* -------------------------------------------
                    DRAWING scene
 ---------------------------------------------*/                   
-void DrawScene()
+void Game::DrawScene()
 {
 	DrawBoard();
 	DrawPiece(mPosX, mPosY, mPiece, mRotation);
@@ -125,12 +124,12 @@ void DrawScene()
 /*--------------------------------------------
                   Creating New piece
 --------------------------------------------*/
-void CreateNewPiece()
+void Game::CreateNewPiece()
 {
 	//bring the next piecce from side screen to main screen
 	mPiece = mNextPiece;
 	mRotation = mNextRotation;
-	mPosX = BOARD_WIDTH/2 + mPieces->GetInitialPositionX (mPiece, mRoatation);
+	mPosX = BOARD_WIDTH/2 + mPieces->GetInitialPositionX (mPiece, mRotation);
 	mPosY = mPieces->GetInitialPositionY (mPiece, mRotation);
 
 	//bring a new next piece
