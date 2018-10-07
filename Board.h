@@ -1,3 +1,6 @@
+#ifndef _BOARD_
+#define _BOARD_
+
 #include "Pieces.h"
 
 #define BOARD_LINE_WIDTH 6          // Width of each of the two lines that delimit the board
@@ -12,8 +15,6 @@
 /*=====================================================
           The Board Class
 =======================================================*/
-#ifndef _BOARD_
-#define _BOARD_
 
 class Board
 {
