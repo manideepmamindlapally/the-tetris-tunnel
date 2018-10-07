@@ -10,9 +10,9 @@ class Pieces
 {
 	public:
 		Pieces();
-		int getBlockType(int pPiece, int pRotation, int pX, int pY);
-		int getInitialPositionX(int pPiece, int pRotation);
-		int getInitialPositionY(int pPiece, int pRotation);
+		int GetBlockType(int pPiece, int pRotation, int pX, int pY);
+		int GetInitialPositionX(int pPiece, int pRotation);
+		int GetInitialPositionY(int pPiece, int pRotation);
 		~Pieces();
 };
 
@@ -24,7 +24,7 @@ Returns type of block
 1 - yes block
 3 - rotation block
 ========================================================*/
-int Pieces::getBlockType(int pPiece, int pRotation, int pX, int pY)
+int Pieces::GetBlockType(int pPiece, int pRotation, int pX, int pY)
 {
 	return mPieces[pPiece][pRotation][pX][pY];
 }
@@ -32,11 +32,11 @@ int Pieces::getBlockType(int pPiece, int pRotation, int pX, int pY)
 /*=======================================================
 Returns the X and Y initial positions of the piece 
 ========================================================*/
-int Pieces::getInitialPositionX(int pPiece, int pRotation)
+int Pieces::GetInitialPositionX(int pPiece, int pRotation)
 {
 	return mPiecesInitialPosition[pPiece][pRotation][0];
 }
-int Pieces::getInitialPositionY(int pPiece, int pRotation)
+int Pieces::GetInitialPositionY(int pPiece, int pRotation)
 {
 	return mPiecesInitialPosition[pPiece][pRotation][1];
 }
